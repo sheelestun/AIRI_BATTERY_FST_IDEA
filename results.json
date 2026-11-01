@@ -1,0 +1,31 @@
+{
+  "dataset": "Severson processed features; train=41 cells, test1=43 separate cells",
+  "target": "cycle life in cycles",
+  "features": "training segment vectors are means of 99 features over each consecutive 250-row window; test vectors use the first window only",
+  "model": "RandomForestRegressor(200 trees, min_samples_leaf=2)",
+  "design": "same S=32; compare N=8 (4 segments/cell) vs N=32 (1 segment/cell); 20 random training-cell subsamples; test1 fixed",
+  "results": [
+    {
+      "N_unique_cells": 8,
+      "S_segments": 32,
+      "repeats": 20,
+      "MAE_cycles_median": 220.3719547342193,
+      "MAE_cycles_iqr": [
+        216.22520283084168,
+        228.87745861018826
+      ]
+    },
+    {
+      "N_unique_cells": 32,
+      "S_segments": 32,
+      "repeats": 20,
+      "MAE_cycles_median": 242.03289727004264,
+      "MAE_cycles_iqr": [
+        220.4057493435183,
+        317.67937392718716
+      ]
+    }
+  ],
+  "delta_MAE_32_vs_8": 21.660942535823352,
+  "caveat": "Pilot sampling scheme is a proxy for repeated segments; four file windows are temporal partitions of processed feature rows and are not asserted to be independent physical cycling protocols. Result is descriptive and does not establish that smaller N is generally preferable."
+}
